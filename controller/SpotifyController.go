@@ -2,7 +2,7 @@ package controller
 
 import (
 	"encoding/json"
-	"io/ioutil"
+	"io"
 	"math/rand"
 	"net/http"
 	"time"
@@ -42,7 +42,7 @@ func GetSavedTrack() string {
 	}
 	defer resp.Body.Close()
 
-	body, err := ioutil.ReadAll(resp.Body)
+	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		panic(err)
 	}
@@ -54,7 +54,7 @@ func GetSavedTrack() string {
 	}
 
 	if len(trackResponse.Items) > 0 {
-		rand.Seed(time.Now().Unix())
+		rand.NewSource(time.Now().Unix())
 		randomIndex := rand.Intn(len(trackResponse.Items))
 
 		trackItem := trackResponse.Items[randomIndex]

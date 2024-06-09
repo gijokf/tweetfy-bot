@@ -5,7 +5,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"os"
 	"time"
@@ -62,7 +62,7 @@ func CreateTweet() {
 	defer resp.Body.Close()
 
 	// Ler a resposta da requisição HTTP
-	respBody, err := ioutil.ReadAll(resp.Body)
+	respBody, err := io.ReadAll(resp.Body)
 	if err != nil {
 		fmt.Println("Erro ao ler a resposta da requisição HTTP:", err)
 		os.Exit(1)
