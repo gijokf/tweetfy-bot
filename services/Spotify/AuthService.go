@@ -11,8 +11,8 @@ import (
 	"os"
 	"strings"
 
-	"twitter-bot-1.0/config"
-	responseBody "twitter-bot-1.0/models"
+	"tweetfy-bot/config"
+	responseBody "tweetfy-bot/models"
 )
 
 const (

@@ -10,8 +10,9 @@ import (
 	"os"
 	"time"
 
+	"tweetfy-bot/config"
+
 	"github.com/dghubble/oauth1"
-	"twitter-bot-1.0/config"
 )
 
 var (

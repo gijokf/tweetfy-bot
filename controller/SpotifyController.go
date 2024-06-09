@@ -7,8 +7,8 @@ import (
 	"net/http"
 	"time"
 
-	track "twitter-bot-1.0/models"
-	spotify "twitter-bot-1.0/services/Spotify"
+	track "tweetfy-bot/models"
+	spotify "tweetfy-bot/services/Spotify"
 )
 
 func GetSavedTrack() string {

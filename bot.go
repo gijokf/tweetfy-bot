@@ -1,8 +1,8 @@
 package main
 
 import (
-	"twitter-bot-1.0/controller"
-	spotify "twitter-bot-1.0/services/Spotify"
+	"tweetfy-bot/controller"
+	spotify "tweetfy-bot/services/Spotify"
 )
 
 func main() {

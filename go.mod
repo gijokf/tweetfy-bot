@@ -1,6 +1,6 @@
-module twitter-bot-1.0
+module tweetfy-bot
 
-go 1.20
+go 1.22.4
 
 require github.com/joho/godotenv v1.5.1
 
