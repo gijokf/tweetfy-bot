@@ -14,12 +14,12 @@ func GetTwitterCredentials() (string, string, string, string) {
 		log.Fatal("Error loading .env file")
 	}
 
-	consumerKey := os.Getenv("consumer_key")
-	consumerSecret := os.Getenv("consumer_secret")
-	accessToken := os.Getenv("access_token")
-	accessTokenSecret := os.Getenv("access_token_secret")
+	twitterConsumerKey := os.Getenv("twitter_consumer_key")
+	twitterConsumerSecret := os.Getenv("twitter_consumer_secret")
+	twitterAccessToken := os.Getenv("twitter_access_token")
+	twitterAccessTokenSecret := os.Getenv("twitter_access_token_secret")
 
-	return consumerKey, consumerSecret, accessToken, accessTokenSecret
+	return twitterConsumerKey, twitterConsumerSecret, twitterAccessToken, twitterAccessTokenSecret
 }
 
 func GetSpotifyCredentials() (string, string) {
@@ -29,10 +29,10 @@ func GetSpotifyCredentials() (string, string) {
 		log.Fatal("Error loading .env file")
 	}
 
-	clientID := os.Getenv("client_id")
-	clientSecret := os.Getenv("client_secret")
+	spotifyClientID := os.Getenv("spotify_client_id")
+	spotifyClientSecret := os.Getenv("spotify_client_secret")
 
-	return clientID, clientSecret
+	return spotifyClientID, spotifyClientSecret
 }
 
 func GetSpotifyRefreshToken() string {
@@ -42,7 +42,7 @@ func GetSpotifyRefreshToken() string {
 		log.Fatal("Error loading .env file")
 	}
 
-	refreshToken := os.Getenv("refresh_token")
+	spotifyRefreshToken := os.Getenv("spotify_refresh_token")
 
-	return refreshToken
+	return spotifyRefreshToken
 }

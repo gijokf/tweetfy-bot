@@ -8,7 +8,6 @@ import (
 	"io"
 	"net/http"
 	"os"
-	"time"
 
 	"tweetfy-bot/config"
 
@@ -20,7 +19,7 @@ var (
 	spotifyLink                                                 = GetSavedTrack()
 )
 
-func CreateTweet() {
+func CreateTweet(text string) {
 	// Configurar as credenciais de autenticação
 	config := oauth1.NewConfig(consumerKey, consumerSecret)
 	token := oauth1.NewToken(accessToken, accessTokenSecret)
@@ -29,16 +28,18 @@ func CreateTweet() {
 	// Configurar o corpo da requisição
 	data := make(map[string]string)
 
-	hour := time.Now().Hour()
+	data["text"] = text + "\n" + spotifyLink
 
-	switch {
-	case hour < 12:
-		data["text"] = "Bom dia do bot 👋🏻🤖.\n" + spotifyLink
-	case hour < 18:
-		data["text"] = "Boa tarde do bot 👋🏻🤖.\n" + spotifyLink
-	default:
-		data["text"] = "Boa noite do bot 👋🏻🤖.\n" + spotifyLink
-	}
+	// hour := time.Now().Hour()
+
+	// switch {
+	// case hour < 12:
+	// 	data["text"] = "Bom dia do bot 👋🏻🤖.\n" + spotifyLink
+	// case hour < 18:
+	// 	data["text"] = "Boa tarde do bot 👋🏻🤖.\n" + spotifyLink
+	// default:
+	// 	data["text"] = "Boa noite do bot 👋🏻🤖.\n" + spotifyLink
+	// }
 
 	jsonData, err := json.Marshal(data)
 	if err != nil {
