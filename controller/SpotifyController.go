@@ -7,21 +7,9 @@ import (
 	"net/http"
 	"time"
 
+	track "twitter-bot-1.0/models"
 	spotify "twitter-bot-1.0/services/Spotify"
 )
-
-type TrackItem struct {
-	Track struct {
-		Name         string `json:"name"`
-		ExternalURLs struct {
-			Spotify string `json:"spotify"`
-		} `json:"external_urls"`
-	} `json:"track"`
-}
-
-type TrackResponse struct {
-	Items []TrackItem `json:"items"`
-}
 
 func GetSavedTrack() string {
 	accessToken := spotify.RenewToken()
@@ -47,7 +35,7 @@ func GetSavedTrack() string {
 		panic(err)
 	}
 
-	var trackResponse TrackResponse
+	var trackResponse track.TrackResponse
 	err = json.Unmarshal(body, &trackResponse)
 	if err != nil {
 		panic(err)
