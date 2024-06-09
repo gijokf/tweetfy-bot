@@ -5,13 +5,14 @@ import (
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"os"
 	"strings"
 
 	"twitter-bot-1.0/config"
+	responseBody "twitter-bot-1.0/models"
 )
 
 const (
@@ -22,14 +23,6 @@ const (
 var (
 	clientID, clientSecret = config.GetSpotifyCredentials()
 )
-
-type ResponseBody struct {
-	AccessToken  string `json:"access_token"`
-	TokenType    string `json:"token_type"`
-	Scope        string `json:"scope"`
-	ExpiresIn    int    `json:"expires_in"`
-	RefreshToken string `json:"refresh_token"`
-}
 
 func Server() {
 	http.HandleFunc("/login", LoginHandler)
@@ -99,13 +92,13 @@ func GenerateToken(code string) {
 	defer resp.Body.Close()
 
 	// Lê o corpo da resposta
-	body, err := ioutil.ReadAll(resp.Body)
+	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		panic(err)
 	}
 
 	// Decodifica o JSON da resposta
-	var responseBody ResponseBody
+	var responseBody responseBody.ResponseBody
 	err = json.Unmarshal(body, &responseBody)
 	if err != nil {
 		panic(err)
@@ -149,13 +142,13 @@ func RenewToken() string {
 	defer resp.Body.Close()
 
 	// Lê o corpo da resposta
-	body, err := ioutil.ReadAll(resp.Body)
+	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		panic(err)
 	}
 
 	// Decodifica o JSON da resposta
-	var responseBody ResponseBody
+	var responseBody responseBody.ResponseBody
 	err = json.Unmarshal(body, &responseBody)
 	if err != nil {
 		panic(err)
