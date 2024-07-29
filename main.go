@@ -15,5 +15,6 @@ func main() {
 		fmt.Println("Erro na leitura do arquivo: ", err)
 	}
 
+	//Criação e postagem da música com o texto aleatório vindo do arquivo.
 	controller.CreateTweet(text)
 }

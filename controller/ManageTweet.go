@@ -30,17 +30,6 @@ func CreateTweet(text string) {
 
 	data["text"] = text + "\n" + spotifyLink
 
-	// hour := time.Now().Hour()
-
-	// switch {
-	// case hour < 12:
-	// 	data["text"] = "Bom dia do bot 👋🏻🤖.\n" + spotifyLink
-	// case hour < 18:
-	// 	data["text"] = "Boa tarde do bot 👋🏻🤖.\n" + spotifyLink
-	// default:
-	// 	data["text"] = "Boa noite do bot 👋🏻🤖.\n" + spotifyLink
-	// }
-
 	jsonData, err := json.Marshal(data)
 	if err != nil {
 		fmt.Println("Erro ao codificar o corpo da requisição em JSON:", err)
@@ -82,4 +71,5 @@ func CreateTweet(text string) {
 
 	tweetID := tweetData["data"].(map[string]interface{})["id"].(string)
 	fmt.Println("Tweet criado com sucesso. ID:", tweetID)
+	os.Exit(0)
 }
